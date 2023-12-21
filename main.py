@@ -1,7 +1,10 @@
 
+from gui.main_menu import main_menu
+
 def main():
     print("Starting...")
-    
+    main_menu()
+    print('Finished')
 
 
 
