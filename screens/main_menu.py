@@ -1,6 +1,7 @@
 from tkinter import *
 from components.retrieve_file import retrieve_file
 
+
 def main_menu():
     root = Tk()
 
@@ -13,10 +14,15 @@ def main_menu():
     lbl = Label(root, text="A lable")
     lbl.grid()
 
+    def on_configure(event):
+    # Update the scroll region to encompass the inner frame
+        canvas.configure(scrollregion=canvas.bbox("all"))
+
     def clicked():
-        lbl.configure(text=f"{retrieve_file()}")
+        lbl.configure(text=f"{retrieve_file()}", wraplength=300)
 
 
+    
     # Change the name of this button later
     button1 = Button(root, text="Click", fg="blue", command=clicked)
     

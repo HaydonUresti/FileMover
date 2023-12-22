@@ -7,6 +7,8 @@ def retrieve_file():
     all_files = os.listdir(folder)
     
     # Retrieving only the first 10 files.
-    files = [f for f in all_files if os.path.isfile(os.path.join(folder, f))][:10]
+    files = [f for f in all_files if os.path.isfile(os.path.join(folder, f))]
+
+    
 
     return files
