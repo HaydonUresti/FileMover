@@ -1,5 +1,5 @@
 from tkinter import *
-
+from components.retrieve_file import retrieve_file
 
 def main_menu():
     root = Tk()
@@ -14,7 +14,7 @@ def main_menu():
     lbl.grid()
 
     def clicked():
-        lbl.configure(text="Click!")
+        lbl.configure(text=f"{retrieve_file()}")
 
 
     # Change the name of this button later
