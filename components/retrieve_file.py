@@ -1,6 +1,17 @@
 import os
 
-def retrieve_file():
+def retrieve_file(term):
+    """
+    A function that retrieves files from the downloads folder if they contain a certain term in their title.
+
+    Parameters:
+                term: The term that is to be looked for in each file's title.
+
+    Returns:
+                files: A list of files that each contain the term in the title.
+    """
+
+
     # Defining the folder to be searched.
     folder = os.path.join(os.path.expanduser('~'), 'Downloads')
 
@@ -8,15 +19,7 @@ def retrieve_file():
     
     # Retrieving the files that contain the word resume 
     files = [f for f in all_files if os.path.isfile(os.path.join(folder, f)) 
-            and f.lower().find('resume') != -1]
-    # files = []
-
-    # for i in all_files:
-    #     if os.path.isfile(os.path.join(folder, i)):
-    #         if i.lower().find('poop'):
-    #             files.append(i)
+            and f.lower().find(term) != -1]
     
-
     return files
 
-# print(retrieve_file())
