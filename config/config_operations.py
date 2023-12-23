@@ -6,6 +6,7 @@ def update_value(key, new_value):
     with open(config_path, "r+") as json_file:
         json_data = json.load(json_file)
         json_data[key] = new_value
+        assert isinstance(json_data[key], str)
         
         # Move the file pointer to the beginning
         json_file.seek(0)
