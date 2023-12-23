@@ -16,3 +16,6 @@ To do:
       - Make new label
       I would like to make this less work, so lets work on abstracting the same set up I have for the search term.
 - Remove JSON from the Git. It does not need to be saved to Git.
+- Add check boxes for items such as "Automate"
+- Add dates to search with
+- Add popup windows to handle errors.

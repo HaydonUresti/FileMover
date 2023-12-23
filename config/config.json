@@ -1,3 +1,4 @@
 {
-  "search_for": ".jpg"
+  "search_for": "",
+  "exclude": ".pdf"
 }
