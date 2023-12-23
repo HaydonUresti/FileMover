@@ -21,5 +21,7 @@ def retrieve_file(term):
     files = [f for f in all_files if os.path.isfile(os.path.join(folder, f)) 
             and f.lower().find(term) != -1]
     
+    if not files:
+        return f"No files contain the term {term}"
     return files
 

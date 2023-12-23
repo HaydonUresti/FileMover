@@ -48,7 +48,7 @@ def main_menu():
     main_canvas.create_window((0,0),window= second_frame, anchor="nw")
 
     # Labels
-    lbl = Label(second_frame, text="A lable")
+    lbl = Label(second_frame, text=f"Files for the term: {read_data(SEARCH_KEY)}")
     lbl.pack()
 
     # This function updates the lable to the files that contain the seach term in their title.
@@ -56,19 +56,19 @@ def main_menu():
         lbl.configure(text=f"{retrieve_file(read_data(SEARCH_KEY))}", wraplength=300)
 
     # Text Box
-    search_term = read_data(SEARCH_KEY)
-    folder_text_box = Text(second_frame, fg="grey", height=5, width=30, relief=GROOVE, bd=2)
+    
+    folder_text_box = Text(second_frame, fg="black", height=1, width=30, relief=GROOVE, bd=2)
     folder_text_box.pack()
-    folder_text_box.insert(INSERT, search_term)
+    folder_text_box.insert(INSERT, read_data(SEARCH_KEY))
 
     ## Buttons ##
-    activate_button = Button(second_frame, text="Click", fg="blue", command=clicked)
-    activate_button.pack()
+    search_button = Button(second_frame, text="Search", fg="green", command=clicked)
+    search_button.pack()
 
     clear_button = Button(second_frame, text="Clear", fg="red", command= lambda: clear(lbl))
     clear_button.pack()
 
-    update_button = Button(second_frame, text="Update", fg="green", 
+    update_button = Button(second_frame, text="Update", fg="blue", 
                            command= lambda: update_value(SEARCH_KEY, folder_text_box.get("1.0",'end-1c')))
     update_button.pack()
 
