@@ -6,9 +6,17 @@ def retrieve_file():
 
     all_files = os.listdir(folder)
     
-    # Retrieving only the first 10 files.
-    files = [f for f in all_files if os.path.isfile(os.path.join(folder, f))]
+    # Retrieving the files that contain the word resume 
+    files = [f for f in all_files if os.path.isfile(os.path.join(folder, f)) 
+            and f.lower().find('resume') != -1]
+    # files = []
 
+    # for i in all_files:
+    #     if os.path.isfile(os.path.join(folder, i)):
+    #         if i.lower().find('poop'):
+    #             files.append(i)
     
 
     return files
+
+# print(retrieve_file())

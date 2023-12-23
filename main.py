@@ -4,12 +4,8 @@ from screens.test_screen import test_screen
 def main():
     print("Starting...")
     # main_menu()
-    test_screen()
+    main_menu()
     print('Finished')
-
-
-
-
 
 
 if __name__ == '__main__':
