@@ -1,4 +1,5 @@
 {
   "search_for": "",
-  "exclude": ".pdf"
+  "exclude": ".pdf",
+  "folder": ""
 }

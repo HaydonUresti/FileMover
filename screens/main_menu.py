@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import filedialog as fd 
 from components.file_manipulation import retrieve_file
 from components.commands.clear import clear
 from config.config_operations import update_value
@@ -9,7 +10,7 @@ from config.config_operations import read_data
 
 SEARCH_KEY = "search_for"
 EXCLUDE_KEY = "exclude"
-
+FOLDER_KEY = "folder"
 
 def search_components(frame, key, content, text_box_list):
     """
@@ -85,7 +86,7 @@ def main_menu():
     main_canvas.create_window((0,0),window= second_frame, anchor="nw")
 
     # Labels
-    output = Label(second_frame, text=f"Files for the term: {read_data(SEARCH_KEY)}")
+    output = Label(second_frame, text=f"Output {read_data(SEARCH_KEY)}")
     output.pack()
 
     # A list that contains the text boxes that are used in the window.
@@ -102,7 +103,7 @@ def main_menu():
         output.configure(text=f"{retrieve_file(read_data(SEARCH_KEY), read_data(EXCLUDE_KEY))}", wraplength=300)
 
 
-    ## Buttons ##
+    
     search_button = Button(second_frame, text="Search", fg="green", command=clicked)
     search_button.pack()
 
@@ -113,6 +114,24 @@ def main_menu():
     clear_button = Button(second_frame, text="Clear", fg="red", command= lambda: clear(output))
     clear_button.pack()
 
+
+    
+    
+
+    # tkinter.filedialog.askopenfile()
+
+    def choose_folder():
+       
+        folder_path = fd.askdirectory(initialdir = "/",title = "Select folder")
+        second_frame.filename = folder_path
+        update_value(FOLDER_KEY, folder_path)
+
+    
+    choose_folder_button = Button(second_frame, text="Choose folder", fg="black", command=choose_folder)
+    choose_folder_button.pack()
+
+    move_files_button = Button(second_frame, text="Move files", fg="black", command=clicked)
+    move_files_button.pack()
     
 
     
