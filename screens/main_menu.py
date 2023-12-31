@@ -5,12 +5,14 @@ from components.file_manipulation import retrieve_file
 from components.commands.clear import clear
 from config.config_operations import update_value
 from config.config_operations import read_data
-
+from components.file_manipulation import move_files
+import os
 
 
 SEARCH_KEY = "search_for"
 EXCLUDE_KEY = "exclude"
 FOLDER_KEY = "folder"
+SEARCH_FOLDER = os.path.join(os.path.expanduser('~'), 'Downloads')
 
 def search_components(frame, key, content, text_box_list):
     """
@@ -100,7 +102,7 @@ def main_menu():
 
     # This function updates the lable to the files that contain the seach term in their title.
     def clicked():
-        output.configure(text=f"{retrieve_file(read_data(SEARCH_KEY), read_data(EXCLUDE_KEY))}", wraplength=300)
+        output.configure(text=f"{retrieve_file(read_data(SEARCH_KEY), read_data(EXCLUDE_KEY),SEARCH_FOLDER )}", wraplength=300)
 
 
     
@@ -113,12 +115,7 @@ def main_menu():
 
     clear_button = Button(second_frame, text="Clear", fg="red", command= lambda: clear(output))
     clear_button.pack()
-
-
     
-    
-
-    # tkinter.filedialog.askopenfile()
 
     def choose_folder():
        
@@ -130,7 +127,7 @@ def main_menu():
     choose_folder_button = Button(second_frame, text="Choose folder", fg="black", command=choose_folder)
     choose_folder_button.pack()
 
-    move_files_button = Button(second_frame, text="Move files", fg="black", command=clicked)
+    move_files_button = Button(second_frame, text="Move files", fg="black", command= lambda: move_files(read_data(FOLDER_KEY), output.cget("text"), SEARCH_FOLDER))
     move_files_button.pack()
     
 

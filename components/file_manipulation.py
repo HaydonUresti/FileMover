@@ -1,6 +1,8 @@
 import os
+import shutil
+import ast
 
-def retrieve_file(term, exclude):
+def retrieve_file(term, exclude, folder):
     """
     A function that retrieves files from the downloads folder if they contain a certain term in their title.
 
@@ -11,9 +13,7 @@ def retrieve_file(term, exclude):
                 files: A list of files that each contain the term in the title.
     """
 
-
     # Defining the folder to be searched.
-    folder = os.path.join(os.path.expanduser('~'), 'Downloads')
 
     all_files = os.listdir(folder)
     
@@ -23,18 +23,11 @@ def retrieve_file(term, exclude):
     
     files = []
 
-    # for file in all_files:
-    #     if os.path.isfile(os.path.join(folder, file)):
-    #         if term == "":
-    #             if exclude == "":
-
     # If both fields are empty do:      
     if term == "" and exclude == "":
         return all_files
     
-   
     
-
     # If only exclude is empty do: 
     if exclude == "":
         for file in all_files:
@@ -56,3 +49,28 @@ def retrieve_file(term, exclude):
         return f"No files contain the term {term}"
     return files
 
+
+
+
+
+def move_files(path, files, folder):
+    """
+   A function that moves given files to a given directory.
+   Parameters
+            path: The new path the file will be moved to.
+            files: The list of files that will be moved.
+            folder: The path/folder that the files are coming from.
+   Returns
+            None
+    """
+    try:
+        files = ast.literal_eval(files)
+    except (SyntaxError, ValueError) as e:
+        print(f"List literal Error: {e}")
+
+    try:
+        for file in files:
+            shutil.move(f'{folder}/{file}', f'{path}/{file}')
+    except:
+        print("Error in componenets.file_manipulation.move_files")
+   
