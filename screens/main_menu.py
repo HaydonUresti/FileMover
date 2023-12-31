@@ -1,12 +1,15 @@
+import os
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog as fd 
 from components.file_manipulation import retrieve_file
+from components.file_manipulation import move_files
 from components.commands.clear import clear
 from config.config_operations import update_value
 from config.config_operations import read_data
-from components.file_manipulation import move_files
-import os
+from config.config_operations import switch_automate
+
+
 
 
 SEARCH_KEY = "search_for"
@@ -115,6 +118,9 @@ def main_menu():
 
     clear_button = Button(second_frame, text="Clear", fg="red", command= lambda: clear(output))
     clear_button.pack()
+
+    automate_button = Button(second_frame, text="Automate", fg="black", command=switch_automate)
+    automate_button.pack()
     
 
     def choose_folder():
